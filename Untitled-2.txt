@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int busiestZone(int** traffic, int N, int M) {
+    int maxZone = 0, maxVehicles = 0;
+    for (int i = 0; i < N; i++) {
+        int sum = 0;
+        for (int j = 0; j < M; j++)
+            sum += traffic[i][j];
+
+        if (sum > maxVehicles) {
+            maxVehicles = sum;
+            maxZone = i;
+        }
+    }
+    return maxZone;
+}
+
+int main() {
+    int N = 3, M = 3;
+    int data[3][3] = {{10, 20, 30}, {25, 15, 10}, {5, 50, 5}};
+    int* traffic[N];
+
+    for (int i = 0; i < N; i++)
+        traffic[i] = data[i];
+
+    cout << "Busiest Zone: " << busiestZone(traffic, N, M) << endl;
+    return 0;
+}
